@@ -1,24 +1,30 @@
 # test001
 
-## Project setup
+## 项目设置
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+- 用于开发的编译和热加载
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+- 编译和缩小生产
+
 ```
 npm run build
 ```
 
-### Lints and fixes files
+- 查找和修复文件
+
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 自定义配置
+See [配置引用](https://cli.vuejs.org/zh/config/#%E5%85%A8%E5%B1%80-cli-%E9%85%8D%E7%BD%AE).
+
+
+

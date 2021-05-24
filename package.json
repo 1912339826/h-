@@ -15,6 +15,7 @@
     "js-audio-recorder": "^1.0.7",
     "lamejs": "^1.2.0",
     "lib-flexible": "^0.3.2",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "px2rem-loader": "^0.1.9",
     "vant": "^3.0.16",

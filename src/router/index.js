@@ -2,15 +2,28 @@ import {
     createRouter,
     createWebHashHistory
 } from 'vue-router';
-import home from '@/views/home'
+import useAxios from '@/views/useAxios'
+import useUtil from '@/views/useUtil'
+// useUtil
 const routes = [{
         path: '/',
-        redirect: '/Home'
+        redirect: '/useUtil'
     },
     {
-        path: '/Home',
-        name: 'Home',
-        component: home
+        path: '/useAxios',
+        name: 'useAxios',
+        component: useAxios,
+        meta: {
+            title: "Axios样例"
+        }
+    },
+    {
+        path: '/useUtil',
+        name: 'useUtil',
+        component: useUtil,
+        meta: {
+            title: "JS 页面的常用工具类样例"
+        }
     }
 ]
 const router = createRouter({

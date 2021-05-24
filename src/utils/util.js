@@ -1,3 +1,5 @@
+//JS 页面的常用工具类
+// js中arguments的用法 https://www.cnblogs.com/LMJBlogs/p/6024148.html
 /**
  * 邮箱
  * @param {*} s
@@ -164,14 +166,14 @@ export const isSpider = () => {
  * 是否ios
  */
 export const isIos = () => {
-    var u = navigator.userAgent;
-    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {  //安卓手机
+    let u = navigator.userAgent;
+    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) { //安卓手机
         return false
-    } else if (u.indexOf('iPhone') > -1) {//苹果手机
+    } else if (u.indexOf('iPhone') > -1) { //苹果手机
         return true
-    } else if (u.indexOf('iPad') > -1) {//iPad
+    } else if (u.indexOf('iPad') > -1) { //iPad
         return false
-    } else if (u.indexOf('Windows Phone') > -1) {//winphone手机
+    } else if (u.indexOf('Windows Phone') > -1) { //winphone手机
         return false
     } else {
         return false
@@ -182,12 +184,13 @@ export const isIos = () => {
  * 是否为PC端
  */
 export const isPC = () => {
-    var userAgentInfo = navigator.userAgent;
-    var Agents = ["Android", "iPhone",
+    let userAgentInfo = navigator.userAgent;
+    let Agents = ["Android", "iPhone",
         "SymbianOS", "Windows Phone",
-        "iPad", "iPod"];
-    var flag = true;
-    for (var v = 0; v < Agents.length; v++) {
+        "iPad", "iPod"
+    ];
+    let flag = true;
+    for (let v = 0; v < Agents.length; v++) {
         if (userAgentInfo.indexOf(Agents[v]) > 0) {
             flag = false;
             break;
@@ -236,17 +239,17 @@ export const injectScript = (src) => {
  * @param {*} url 
  */
 export const download = (url) => {
-    var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-    var isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+    let isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    let isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
     if (isChrome || isSafari) {
-        var link = document.createElement('a');
+        let link = document.createElement('a');
         link.href = url;
         if (link.download !== undefined) {
-            var fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+            let fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
             link.download = fileName;
         }
         if (document.createEvent) {
-            var e = document.createEvent('MouseEvents');
+            let e = document.createEvent('MouseEvents');
             e.initEvent('click', true, true);
             link.dispatchEvent(e);
             return true;
@@ -322,12 +325,20 @@ export const scrollToTop = () => {
  * @param {*} partiallyVisible 
  */
 export const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
-    const { top, left, bottom, right } = el.getBoundingClientRect();
-    const { innerHeight, innerWidth } = window;
-    return partiallyVisible
-        ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
-        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
-        : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+    const {
+        top,
+        left,
+        bottom,
+        right
+    } = el.getBoundingClientRect();
+    const {
+        innerHeight,
+        innerWidth
+    } = window;
+    return partiallyVisible ?
+        ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
+        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth)) :
+        top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 }
 
 /**
@@ -335,7 +346,7 @@ export const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
  * @param {*} arr 
  */
 export const shuffle = (arr) => {
-    var result = [],
+    let result = [],
         random;
     while (arr.length > 0) {
         random = Math.floor(Math.random() * arr.length);
@@ -350,13 +361,13 @@ export const shuffle = (arr) => {
  * @param {*} value 
  */
 export const copyTextToClipboard = (value) => {
-    var textArea = document.createElement("textarea");
+    let textArea = document.createElement("textarea");
     textArea.style.background = 'transparent';
     textArea.value = value;
     document.body.appendChild(textArea);
     textArea.select();
     try {
-        var successful = document.execCommand('copy');
+        // let successful = document.execCommand('copy');
     } catch (err) {
         console.log('Oops, unable to copy');
     }
@@ -371,39 +382,39 @@ export const copyTextToClipboard = (value) => {
  */
 export const checkStr = (str, type) => {
     switch (type) {
-        case 'phone':   //手机号码
+        case 'phone': //手机号码
             return /^1[3|4|5|6|7|8|9][0-9]{9}$/.test(str);
-        case 'tel':     //座机
+        case 'tel': //座机
             return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
-        case 'card':    //身份证
+        case 'card': //身份证
             return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(str);
-        case 'pwd':     //密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线
+        case 'pwd': //密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线
             return /^[a-zA-Z]\w{5,17}$/.test(str)
-        case 'postal':  //邮政编码
+        case 'postal': //邮政编码
             return /[1-9]\d{5}(?!\d)/.test(str);
-        case 'QQ':      //QQ号
+        case 'QQ': //QQ号
             return /^[1-9][0-9]{4,9}$/.test(str);
-        case 'email':   //邮箱
+        case 'email': //邮箱
             return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
-        case 'money':   //金额(小数点2位)
+        case 'money': //金额(小数点2位)
             return /^\d*(?:\.\d{0,2})?$/.test(str);
-        case 'URL':     //网址
-            return /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/.test(str)
-        case 'IP':      //IP
+        case 'URL': //网址
+            return /(http|ftp|https):\/\/[\w\-_]+([\w\-_]+)+([w,@?^=%&:/~#]*[\w?^=%&/~])?/.test(str)
+        case 'IP': //IP
             return /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/.test(str);
-        case 'date':    //日期时间
-            return /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2})(?:\:\d{2}|:(\d{2}):(\d{2}))$/.test(str) || /^(\d{4})\-(\d{2})\-(\d{2})$/.test(str)
-        case 'number':  //数字
+        case 'date': //日期时间
+            return /^(\d{4})-(\d{2})-(\d{2}) (\d{2})(?::\d{2}|:(\d{2}):(\d{2}))$/.test(str) || /^(\d{4})-(\d{2})-(\d{2})$/.test(str)
+        case 'number': //数字
             return /^[0-9]$/.test(str);
         case 'english': //英文
             return /^[a-zA-Z]+$/.test(str);
         case 'chinese': //中文
             return /^[\\u4E00-\\u9FA5]+$/.test(str);
-        case 'lower':   //小写
+        case 'lower': //小写
             return /^[a-z]+$/.test(str);
-        case 'upper':   //大写
+        case 'upper': //大写
             return /^[A-Z]+$/.test(str);
-        case 'HTML':    //HTML标记
+        case 'HTML': //HTML标记
             return /<("[^"]*"|'[^']*'|[^'">])*>/.test(str);
         default:
             return true;
@@ -420,14 +431,50 @@ export const isCardID = (sId) => {
         return false
     }
     //身份证城市
-    var aCity = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外" };
+    let aCity = {
+        11: "北京",
+        12: "天津",
+        13: "河北",
+        14: "山西",
+        15: "内蒙古",
+        21: "辽宁",
+        22: "吉林",
+        23: "黑龙江",
+        31: "上海",
+        32: "江苏",
+        33: "浙江",
+        34: "安徽",
+        35: "福建",
+        36: "江西",
+        37: "山东",
+        41: "河南",
+        42: "湖北",
+        43: "湖南",
+        44: "广东",
+        45: "广西",
+        46: "海南",
+        50: "重庆",
+        51: "四川",
+        52: "贵州",
+        53: "云南",
+        54: "西藏",
+        61: "陕西",
+        62: "甘肃",
+        63: "青海",
+        64: "宁夏",
+        65: "新疆",
+        71: "台湾",
+        81: "香港",
+        82: "澳门",
+        91: "国外"
+    };
     if (!aCity[parseInt(sId.substr(0, 2))]) {
         console.log('你的身份证地区非法')
         return false
     }
 
     // 出生日期验证
-    var sBirthday = (sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2))).replace(/-/g, "/"),
+    let sBirthday = (sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2))).replace(/-/g, "/"),
         d = new Date(sBirthday)
     if (sBirthday != (d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate())) {
         console.log('身份证上的出生日期非法')
@@ -435,13 +482,13 @@ export const isCardID = (sId) => {
     }
 
     // 身份证号码校验
-    var sum = 0,
+    let sum = 0,
         weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
         codes = "10X98765432"
-    for (var i = 0; i < sId.length - 1; i++) {
+    for (let i = 0; i < sId.length - 1; i++) {
         sum += sId[i] * weights[i];
     }
-    var last = codes[sum % 11]; //计算出来的最后一位身份证号码
+    let last = codes[sum % 11]; //计算出来的最后一位身份证号码
     if (sId[sId.length - 1] != last) {
         console.log('你输入的身份证号非法')
         return false
@@ -459,7 +506,7 @@ export const isCardID = (sId) => {
 /**
  * 随机数范围
  */
-export const random = (min, max) => {
+export function random(min, max) {
     if (arguments.length === 2) {
         return Math.floor(min + Math.random() * ((max + 1) - min))
     } else {
@@ -472,12 +519,12 @@ export const random = (min, max) => {
  * 将阿拉伯数字翻译成中文的大写数字
  */
 export const numberToChinese = (num) => {
-    var AA = new Array("零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十");
-    var BB = new Array("", "十", "百", "仟", "萬", "億", "点", "");
-    var a = ("" + num).replace(/(^0*)/g, "").split("."),
+    let AA = new Array("零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十");
+    let BB = new Array("", "十", "百", "仟", "萬", "億", "点", "");
+    let a = ("" + num).replace(/(^0*)/g, "").split("."),
         k = 0,
         re = "";
-    for (var i = a[0].length - 1; i >= 0; i--) {
+    for (let i = a[0].length - 1; i >= 0; i--) {
         switch (k) {
             case 0:
                 re = BB[7] + re;
@@ -503,7 +550,7 @@ export const numberToChinese = (num) => {
     if (a.length > 1) // 加上小数部分(如果有小数部分)
     {
         re += BB[6];
-        for (var i = 0; i < a[1].length; i++)
+        for (let i = 0; i < a[1].length; i++)
             re += AA[a[1].charAt(i)];
     }
     if (re == '一十')
@@ -517,28 +564,30 @@ export const numberToChinese = (num) => {
  * 将数字转换为大写金额
  */
 export const changeToChinese = (Num) => {
+    let i;
+    let tmpnewchar = ""
+    let perchar;
     //判断如果传递进来的不是字符的话转换为字符
     if (typeof Num == "number") {
         Num = new String(Num);
-    };
+    }
     Num = Num.replace(/,/g, "") //替换tomoney()中的“,”
     Num = Num.replace(/ /g, "") //替换tomoney()中的空格
     Num = Num.replace(/￥/g, "") //替换掉可能出现的￥字符
     if (isNaN(Num)) { //验证输入的字符是否为数字
         //alert("请检查小写金额是否正确");
         return "";
-    };
+    }
     //字符处理完毕后开始转换，采用前后两部分分别转换
-    var part = String(Num).split(".");
-    var newchar = "";
+    let part = String(Num).split(".");
+    let newchar = "";
     //小数点前进行转化
-    for (var i = part[0].length - 1; i >= 0; i--) {
+    for (i = part[0].length - 1; i >= 0; i--) {
         if (part[0].length > 10) {
             return "";
             //若数量超过拾亿单位，提示
         }
-        var tmpnewchar = ""
-        var perchar = part[0].charAt(i);
+        perchar = part[0].charAt(i);
         switch (perchar) {
             case "0":
                 tmpnewchar = "零" + tmpnewchar;
@@ -603,7 +652,7 @@ export const changeToChinese = (Num) => {
                 tmpnewchar = tmpnewchar + "拾";
                 break;
         }
-        var newchar = tmpnewchar + newchar;
+        let newchar = tmpnewchar + newchar;
     }
     //小数点之后进行转化
     if (Num.indexOf(".") != -1) {
@@ -683,12 +732,12 @@ export const contains = (arr, val) => {
  * @param  {fn} 回调函数
  * @return {undefined}
  */
-export const each = (arr, fn) => {
+export function each(arr, fn) {
     fn = fn || Function;
-    var a = [];
-    var args = Array.prototype.slice.call(arguments, 1);
-    for (var i = 0; i < arr.length; i++) {
-        var res = fn.apply(arr, [arr[i], i].concat(args));
+    let a = [];
+    let args = Array.prototype.slice.call(arguments, 1);
+    for (let i = 0; i < arr.length; i++) {
+        let res = fn.apply(arr, [arr[i], i].concat(args));
         if (res != null) a.push(res);
     }
 }
@@ -700,10 +749,10 @@ export const each = (arr, fn) => {
  * @return {Array} 
  */
 export const map = (arr, fn, thisObj) => {
-    var scope = thisObj || window;
-    var a = [];
-    for (var i = 0, j = arr.length; i < j; ++i) {
-        var res = fn.call(scope, arr[i], i, this);
+    let scope = thisObj || window;
+    let a = [];
+    for (let i = 0, j = arr.length; i < j; ++i) {
+        let res = fn.call(scope, arr[i], i, this);
         if (res != null) a.push(res);
     }
     return a;
@@ -734,11 +783,12 @@ export const sort = (arr, type = 1) => {
  * 去重
  */
 export const unique = (arr) => {
-    if (Array.hasOwnProperty('from')) {
+    if (Array.prototype.hasOwnProperty.call('from')) {
         return Array.from(new Set(arr));
     } else {
-        var n = {}, r = [];
-        for (var i = 0; i < arr.length; i++) {
+        let n = {},
+            r = [];
+        for (let i = 0; i < arr.length; i++) {
             if (!n[arr[i]]) {
                 n[arr[i]] = true;
                 r.push(arr[i]);
@@ -753,7 +803,7 @@ export const unique = (arr) => {
  * 求两个集合的并集
  */
 export const union = (a, b) => {
-    var newArr = a.concat(b);
+    let newArr = a.concat(b);
     return this.unique(newArr);
 }
 
@@ -761,7 +811,7 @@ export const union = (a, b) => {
  * 求两个集合的交集
  */
 export const intersect = (a, b) => {
-    var _this = this;
+    let _this = this;
     a = this.unique(a);
     return this.map(a, function (o) {
         return _this.contains(b, o) ? o : null;
@@ -772,7 +822,7 @@ export const intersect = (a, b) => {
  * 删除其中一个元素
  */
 export const remove = (arr, ele) => {
-    var index = arr.indexOf(ele);
+    let index = arr.indexOf(ele);
     if (index > -1) {
         arr.splice(index, 1);
     }
@@ -783,12 +833,12 @@ export const remove = (arr, ele) => {
  * 将类数组转换为数组的方法
  */
 export const formArray = (ary) => {
-    var arr = [];
+    let arr = [];
     if (Array.isArray(ary)) {
         arr = ary;
     } else {
         arr = Array.prototype.slice.call(ary);
-    };
+    }
     return arr;
 }
 
@@ -887,10 +937,10 @@ export const changeCase = (str, type) => {
 
 
 /*
-*  检测密码强度
-*/
+ *  检测密码强度
+ */
 export const checkPwd = (str) => {
-    var Lv = 0;
+    let Lv = 0;
     if (str.length < 6) {
         return Lv
     }
@@ -903,7 +953,7 @@ export const checkPwd = (str) => {
     if (/[A-Z]/.test(str)) {
         Lv++
     }
-    if (/[\.|-|_]/.test(str)) {
+    if (/[|-|_]/.test(str)) {
         Lv++
     }
     return Lv;
@@ -930,26 +980,26 @@ export const debouncer = (fn, time, interval = 200) => {
  * @returns {string} 返回新生成的字符
  */
 export const insertStr = (soure, index, newStr) => {
-    var str = soure.slice(0, index) + newStr + soure.slice(index);
+    let str = soure.slice(0, index) + newStr + soure.slice(index);
     return str;
 }
 
 /**
-* 判断两个对象是否键值相同
-* @param  {Object}  a 第一个对象
-* @param  {Object}  b 第一个对象
-* @return {Boolean}   相同返回true，否则返回false
-*/
+ * 判断两个对象是否键值相同
+ * @param  {Object}  a 第一个对象
+ * @param  {Object}  b 第一个对象
+ * @return {Boolean}   相同返回true，否则返回false
+ */
 export const isObjectEqual = (a, b) => {
-    var aProps = Object.getOwnPropertyNames(a);
-    var bProps = Object.getOwnPropertyNames(b);
+    let aProps = Object.getOwnPropertyNames(a);
+    let bProps = Object.getOwnPropertyNames(b);
 
     if (aProps.length !== bProps.length) {
         return false;
     }
 
-    for (var i = 0; i < aProps.length; i++) {
-        var propName = aProps[i];
+    for (let i = 0; i < aProps.length; i++) {
+        let propName = aProps[i];
 
         if (a[propName] !== b[propName]) {
             return false;
@@ -966,20 +1016,20 @@ export const isObjectEqual = (a, b) => {
  */
 export const colorToRGB = (val, opa) => {
 
-    var pattern = /^(#?)[a-fA-F0-9]{6}$/; //16进制颜色值校验规则
-    var isOpa = typeof opa == 'number'; //判断是否有设置不透明度
+    let pattern = /^(#?)[a-fA-F0-9]{6}$/; //16进制颜色值校验规则
+    let isOpa = typeof opa == 'number'; //判断是否有设置不透明度
 
     if (!pattern.test(val)) { //如果值不符合规则返回空字符
         return '';
     }
 
-    var v = val.replace(/#/, ''); //如果有#号先去除#号
-    var rgbArr = [];
-    var rgbStr = '';
+    let v = val.replace(/#/, ''); //如果有#号先去除#号
+    let rgbArr = [];
+    let rgbStr = '';
 
-    for (var i = 0; i < 3; i++) {
-        var item = v.substring(i * 2, i * 2 + 2);
-        var num = parseInt(item, 16);
+    for (let i = 0; i < 3; i++) {
+        let item = v.substring(i * 2, i * 2 + 2);
+        let num = parseInt(item, 16);
         rgbArr.push(num);
     }
 
@@ -988,6 +1038,7 @@ export const colorToRGB = (val, opa) => {
     return rgbStr;
 }
 
+import QueryParam from './QueryParam.js'
 /**
  * 追加url参数
  * @param {string} url url参数
@@ -999,12 +1050,13 @@ export const colorToRGB = (val, opa) => {
  * appendQuery('lechebang.com?key=value', { cityId: 2, cityName: '北京'});
  */
 export const appendQuery = (url, key, value) => {
-    var options = key;
+    let options = key;
     if (typeof options == 'string') {
         options = {};
         options[key] = value;
     }
-    options = $.param(options);
+    // options = $.param(options);
+    options = QueryParam(options);
     if (url.includes('?')) {
         url += '&' + options
     } else {
@@ -1017,11 +1069,11 @@ export const appendQuery = (url, key, value) => {
 /**
  * 判断a数组是否包含b数组中
  */
-export const getArrRepeat = (arr1,arr2) =>{
-    return arr1.filter((item,index) =>{
+export const getArrRepeat = (arr1, arr2) => {
+    return arr1.filter((item) => {
         return arr2.includes(item)
     })
-} 
+}
 
 
 
@@ -1029,10 +1081,29 @@ export const getArrRepeat = (arr1,arr2) =>{
  * 将数组分片
  * 列子[1,2,3,4,5,6,7,8] [[1,2,3],[4,5,6],[7,8]]
  */
-export const arrChunk = (data=[],space=5) => {
-    var result = [];
-    for (var i = 0, len = data.length; i < len; i += space) {
+export const arrChunk = (data = [], space = 5) => {
+    let result = [];
+    for (let i = 0, len = data.length; i < len; i += space) {
         result.push(data.slice(i, i + space));
     }
-    return {data:result,total:data.length,space};
+    return {
+        data: result,
+        total: data.length,
+        space
+    };
 }
+
+/**
+ * 取得当前日期所在月的最大天数
+ *  @param {Date} date 值
+ */
+
+export function maxDayOfDate(date) {
+    date = arguments[0] || new Date();
+    date.setDate(1);
+    date.setMonth(date.getMonth() + 1);
+    let time = date.getTime() - 24 * 60 * 60 * 1000;
+    let newDate = new Date(time);
+    return newDate.getDate();
+}
+
