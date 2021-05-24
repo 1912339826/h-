@@ -4,6 +4,7 @@ import {
 } from 'vue-router';
 import useAxios from '@/views/useAxios'
 import useUtil from '@/views/useUtil'
+import theme from '@/views/theme'
 // useUtil
 const routes = [{
         path: '/',
@@ -23,6 +24,14 @@ const routes = [{
         component: useUtil,
         meta: {
             title: "JS 页面的常用工具类样例"
+        }
+    },
+    {
+        path: '/theme',
+        name: 'theme',
+        component: theme,
+        meta: {
+            title: "vant主题定制"
         }
     }
 ]
