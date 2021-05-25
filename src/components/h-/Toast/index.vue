@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <van-button type="primary" text="1111" />
-  </div>
+  <div></div>
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, toRefs } from "vue";
 export default defineComponent({
   name: "",
   props: {},
@@ -13,7 +11,7 @@ export default defineComponent({
   setup() {
     const data = reactive({});
     return {
-      data,
+      ...toRefs(data),
     };
   },
 });

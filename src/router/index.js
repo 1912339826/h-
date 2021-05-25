@@ -5,6 +5,7 @@ import {
 import useAxios from '@/views/useAxios'
 import useUtil from '@/views/useUtil'
 import theme from '@/views/theme'
+import useToast from '@/views/useToast'
 // useUtil
 const routes = [{
         path: '/',
@@ -32,6 +33,14 @@ const routes = [{
         component: theme,
         meta: {
             title: "vant主题定制"
+        }
+    },
+    {
+        path: '/useToast',
+        name: 'useToast',
+        component: useToast,
+        meta: {
+            title: "Toast"
         }
     }
 ]

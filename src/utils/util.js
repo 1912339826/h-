@@ -1,7 +1,18 @@
-//JS 页面的常用工具类
-// js中arguments的用法 https://www.cnblogs.com/LMJBlogs/p/6024148.html
 /**
- * 邮箱
+ * @overview JS 页面的常用工具类
+ * {@link https://www.cnblogs.com/LMJBlogs/p/6024148.html js中arguments的用法}
+ */
+
+/**
+ * @todo 邮箱
+ * Solves equations of the form a * x = b
+ * @example
+ * // returns 2
+ * globalNS.method1(5, 10);
+ * @example
+ * // returns 3
+ * globalNS.method(5, 15);
+ * @returns {Number} Returns the value of x for the equation.
  * @param {*} s
  */
 export const isEmail = (s) => {
@@ -9,7 +20,7 @@ export const isEmail = (s) => {
 }
 
 /**
- * 手机号码
+ * @todo 手机号码
  * @param {*} s
  */
 export const isMobile = (s) => {
@@ -17,7 +28,7 @@ export const isMobile = (s) => {
 }
 
 /**
- * 电话号码
+ * @todo 电话号码
  * @param {*} s
  */
 export const isPhone = (s) => {
@@ -25,106 +36,120 @@ export const isPhone = (s) => {
 }
 
 /**
- * URL地址
  * @param {*} s
+ * @todo URL地址
  */
 export const isURL = (s) => {
     return /^http[s]?:\/\/.*/.test(s)
 }
 
 /**
- * 是否字符串
+ * @param {*} o
+ * @todo 是否字符串
  */
 export const isString = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'String'
 }
 
 /**
- * 是否数字
+ * @param {*} o
+ * @todo 是否数字
  */
 export const isNumber = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Number'
 }
 
 /**
- * 是否boolean
+ * @param {*} o
+ * @todo 是否boolean
  */
 export const isBoolean = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean'
 }
 
 /**
- * 是否函数
+ * @param {*} o
+ * @todo 是否函数
  */
 export const isFunction = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Function'
 }
 
 /**
- * 是否为null
+ * @param {*} o
+ * @todo 是否为null
  */
 export const isNull = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Null'
 }
 
 /**
- * 是否undefined
+ * @param {*} o
+ * @todo 是否undefined
  */
 export const isUndefined = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Undefined'
 }
 
 /**
- * 是否对象
+ * @param {*} o
+ * @todo 是否对象
  */
 export const isObj = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Object'
 }
 
 /**
- * /是否数组
+ * @param {*} o
+ * @todo 是否数组
  */
 export const isArray = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Array'
 }
 
 /**
- * 是否时间
+ * @param {*} o
+ * @todo 是否时间
  */
 export const isDate = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Date'
 }
 
 /**
- * 是否正则
+ * @param {*} o
+ * @todo 是否正则
  */
 export const isRegExp = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'RegExp'
 }
 
 /**
- * 是否错误对象
+ * @param {*} o
+ * @todo 是否错误对象
  */
 export const isError = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Error'
 }
 
 /**
- * 是否Symbol函数
+ * @param {*} o
+ * @todo 是否Symbol函数
  */
 export const isSymbol = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Symbol'
 }
 
 /**
- * 是否Promise对象
+ * @param {*} o
+ * @todo 是否Promise对象
  */
 export const isPromise = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Promise'
 }
 
 /**
- * 是否Set对象
+ * @param {*} o
+ * @todo 是否Set对象
  */
 export const isSet = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Set'
@@ -133,21 +158,21 @@ export const isSet = (o) => {
 export const ua = navigator.userAgent.toLowerCase();
 
 /**
- * 是否是微信浏览器
+ * @todo 是否是微信浏览器
  */
 export const isWeiXin = () => {
     return ua.match(/microMessenger/i) == 'micromessenger'
 }
 
 /**
- * 是否是移动端
+ * @todo 是否是移动端
  */
 export const isDeviceMobile = () => {
     return /android|webos|iphone|ipod|balckberry/i.test(ua)
 }
 
 /**
- * 是否是QQ浏览器
+ * @todo  是否是QQ浏览器
  */
 export const isQQBrowser = () => {
     return !!ua.match(/mqqbrowser|qzone|qqbrowser|qbwebviewtype/i)
@@ -155,7 +180,7 @@ export const isQQBrowser = () => {
 
 
 /**
- * 是否是爬虫
+ * @todo 是否是爬虫
  */
 export const isSpider = () => {
     return /adsbot|googlebot|bingbot|msnbot|yandexbot|baidubot|robot|careerbot|seznambot|bot|baiduspider|jikespider|symantecspider|scannerlwebcrawler|crawler|360spider|sosospider|sogou web sprider|sogou orion spider/.test(ua)
@@ -422,82 +447,225 @@ export const checkStr = (str, type) => {
 }
 
 /**
- * 严格的身份证校验
- * @param {*} sId 
+ *  @todo 严格的身份证校验
+ *  @param {string} num 
+ *  @tutorial https://blog.csdn.net/haibo5240/article/details/89022595
  */
-export const isCardID = (sId) => {
-    if (!/(^\d{15}$)|(^\d{17}(\d|X|x)$)/.test(sId)) {
-        console.log('你输入的身份证长度或格式错误')
-        return false
+export function isCardID(num) {
+    //num数据类型为字符串 
+    num = num.toUpperCase();
+    //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
+    if (!/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num)) {
+        return false;
     }
-    //身份证城市
-    let aCity = {
-        11: "北京",
-        12: "天津",
-        13: "河北",
-        14: "山西",
-        15: "内蒙古",
-        21: "辽宁",
-        22: "吉林",
-        23: "黑龙江",
-        31: "上海",
-        32: "江苏",
-        33: "浙江",
-        34: "安徽",
-        35: "福建",
-        36: "江西",
-        37: "山东",
-        41: "河南",
-        42: "湖北",
-        43: "湖南",
-        44: "广东",
-        45: "广西",
-        46: "海南",
-        50: "重庆",
-        51: "四川",
-        52: "贵州",
-        53: "云南",
-        54: "西藏",
-        61: "陕西",
-        62: "甘肃",
-        63: "青海",
-        64: "宁夏",
-        65: "新疆",
-        71: "台湾",
-        81: "香港",
-        82: "澳门",
-        91: "国外"
-    };
-    if (!aCity[parseInt(sId.substr(0, 2))]) {
-        console.log('你的身份证地区非法')
-        return false
-    }
+    //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+    //下面分别分析出生日期和校验位
+    let len, re;
+    len = num.length;
+    if (len == 15) {
+        re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
+        let arrSplit = num.match(re);
 
-    // 出生日期验证
-    let sBirthday = (sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2))).replace(/-/g, "/"),
-        d = new Date(sBirthday)
-    if (sBirthday != (d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate())) {
-        console.log('身份证上的出生日期非法')
-        return false
+        //检查生日日期是否正确
+        let dtmBirth = new Date(
+            "19" + arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]
+        );
+        let bCorrectDay;
+        bCorrectDay =
+            dtmBirth.getYear() == Number(arrSplit[2]) &&
+            dtmBirth.getMonth() + 1 == Number(arrSplit[3]) &&
+            dtmBirth.getDate() == Number(arrSplit[4]);
+        if (!bCorrectDay) {
+            return false;
+        } else {
+            //将15位身份证转成18位
+            //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+            let arrInt = new Array(
+                7,
+                9,
+                10,
+                5,
+                8,
+                4,
+                2,
+                1,
+                6,
+                3,
+                7,
+                9,
+                10,
+                5,
+                8,
+                4,
+                2
+            );
+            let arrCh = new Array(
+                "1",
+                "0",
+                "X",
+                "9",
+                "8",
+                "7",
+                "6",
+                "5",
+                "4",
+                "3",
+                "2"
+            );
+            let nTemp = 0,
+                i;
+            num = num.substr(0, 6) + "19" + num.substr(6, num.length - 6);
+            for (i = 0; i < 17; i++) {
+                nTemp += num.substr(i, 1) * arrInt[i];
+            }
+            num += arrCh[nTemp % 11];
+            return true;
+        }
     }
+    if (len == 18) {
+        re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+        let arrSplit = num.match(re);
 
-    // 身份证号码校验
-    let sum = 0,
-        weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
-        codes = "10X98765432"
-    for (let i = 0; i < sId.length - 1; i++) {
-        sum += sId[i] * weights[i];
+        //检查生日日期是否正确
+        let dtmBirth = new Date(
+            arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]
+        );
+        let bCorrectDay;
+        bCorrectDay =
+            dtmBirth.getFullYear() == Number(arrSplit[2]) &&
+            dtmBirth.getMonth() + 1 == Number(arrSplit[3]) &&
+            dtmBirth.getDate() == Number(arrSplit[4]);
+        if (!bCorrectDay) {
+            return false;
+        } else {
+            //检验18位身份证的校验码是否正确。
+            //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+            let valnum;
+            let arrInt = new Array(
+                7,
+                9,
+                10,
+                5,
+                8,
+                4,
+                2,
+                1,
+                6,
+                3,
+                7,
+                9,
+                10,
+                5,
+                8,
+                4,
+                2
+            );
+            let arrCh = new Array(
+                "1",
+                "0",
+                "X",
+                "9",
+                "8",
+                "7",
+                "6",
+                "5",
+                "4",
+                "3",
+                "2"
+            );
+            let nTemp = 0,
+                i;
+            for (i = 0; i < 17; i++) {
+                nTemp += num.substr(i, 1) * arrInt[i];
+            }
+            valnum = arrCh[nTemp % 11];
+            if (valnum != num.substr(17, 1)) {
+                return false;
+            }
+            return true;
+        }
     }
-    let last = codes[sum % 11]; //计算出来的最后一位身份证号码
-    if (sId[sId.length - 1] != last) {
-        console.log('你输入的身份证号非法')
-        return false
-    }
-
-    return true
+    return false;
 }
 
+/**
+ *  @todo 护照验证 
+ *  @tutorial https://www.jb51.cc/regex/488106.html
+ *  @param {string} cardNum
+ *  @returns {boolean} true or false
+ */
+export function isPassport(cardNum) {
+    let re1 = /^[\S\n\s]{8,10}$/
+    let arrSplit = re1.test(cardNum);
+    return arrSplit
+}
 
+/**
+ * @todo 港澳通行证验证
+ * @param {string} cardNum 
+ * @tutorial https://www.jb51.cc/regex/488106.html
+ * @returns {boolean} true or false
+ */
+export function isHKMacao(cardNum) {
+    let re = /^[\S\n\s]{8,11}$/
+    let arrSplit = re.test(cardNum);
+    return arrSplit
+}
+
+/**
+ * @todo 台湾地区身份证校验
+ * @param {string} idcard 
+ * @returns {boolean} true or false
+ */
+export function isTaiwan(idcard) {
+    if (/^[A-Z][1-2]\d{8}$/.test(idcard)) {
+        var area = {
+            'A': 10,
+            'B': 11,
+            'C': 12,
+            'D': 13,
+            'E': 14,
+            'F': 15,
+            'G': 16,
+            'H': 17,
+            'J': 18,
+            'K': 19,
+            'L': 20,
+            'M': 21,
+            'N': 22,
+            'P': 23,
+            'Q': 24,
+            'R': 25,
+            'S': 26,
+            'T': 27,
+            'U': 28,
+            'V': 29,
+            'X': 30,
+            'Y': 31,
+            'W': 32,
+            'Z': 33,
+            'I': 34,
+            'O': 35
+        };
+        var idcard_array = new Array();
+
+        idcard_array = idcard.split("");
+
+        var jym = parseInt(area[idcard_array[0]] / 10) + 9 * (area[idcard_array[0]] % 10) + 8 * idcard_array[1] + 7 * idcard_array[2] + 6 * idcard_array[3] + 5 * idcard_array[4] + 4 * idcard_array[5] + 3 * idcard_array[6] + 2 * idcard_array[7] + 1 * idcard_array[8];
+
+        jym = (10 - jym % 10) % 10;
+
+        if (idcard_array[9] == jym) {
+            return true;
+        }
+        return false
+    } else {
+        let re1 = /^[\S\n\s]{8,18}$/
+        let arrSplit = re1.test(idcard);
+        //   // return arrSplit
+        return arrSplit
+    }
+}
 
 
 /********************************************* 数字转换 ******************************/
@@ -1106,4 +1274,3 @@ export function maxDayOfDate(date) {
     let newDate = new Date(time);
     return newDate.getDate();
 }
-

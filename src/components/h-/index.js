@@ -1,5 +1,5 @@
-import hButton from './button/index.vue'
+import Toast from './Toast/index.vue'
 export default [{
-    name: hButton,
-    tag: 'h-button'
+    name: Toast,
+    tag: 'h-Toast'
 }]
