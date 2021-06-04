@@ -6,6 +6,8 @@ import useAxios from '@/views/useAxios'
 import useUtil from '@/views/useUtil'
 import theme from '@/views/theme'
 import useToast from '@/views/useToast'
+import catchPage from '@/views/catch/index.vue'
+import Image from "@/views/Image"
 // useUtil
 const routes = [{
         path: '/',
@@ -41,6 +43,22 @@ const routes = [{
         component: useToast,
         meta: {
             title: "Toast"
+        }
+    },
+    {
+        path: '/Image',
+        name: 'Image',
+        component: Image,
+        meta: {
+            title: "Image"
+        }
+    },
+    {
+        path: '/catch',
+        name: 'catch',
+        component: catchPage,
+        meta: {
+            title: "catch"
         }
     }
 ]

@@ -1,10 +1,10 @@
 import {
     Toast
 } from "vant";
-
+// (未完成)
 export default function () {
     Toast.setDefaultOptions({
-        duration: 0
+        duration: 2000//ms,停留时间,值为0时,不自动消失.
     });
 
     Toast.allowMultiple();
@@ -13,7 +13,6 @@ export default function () {
      * @todo 设置Toast
      * @param {string|object} content 填充的内容
      * @param {string} type 插入字符的位置
-     * @tutorial https://www.cnblogs.com/decode1234/p/11085003.html
      */
 
     function setToast(content, type) {

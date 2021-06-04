@@ -1,3 +1,6 @@
+/**
+ * @overview JS=>JQ $.param
+ */
 var nextStr = '';
 function changeDataType(obj){
  let str = ''
@@ -27,4 +30,4 @@ function changeSonType(objName, objValue){
  return nextStr; 
 }
 
-export default changeDataType //$.param
+export default changeDataType
