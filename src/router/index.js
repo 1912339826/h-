@@ -8,6 +8,7 @@ import theme from '@/views/theme'
 import useToast from '@/views/useToast'
 import catchPage from '@/views/catch/index.vue'
 import Image from "@/views/Image"
+import calendar from '@/views/calendar'
 // useUtil
 const routes = [{
         path: '/',
@@ -59,6 +60,14 @@ const routes = [{
         component: catchPage,
         meta: {
             title: "catch"
+        }
+    },
+    {
+        path: '/calendar',
+        name: 'calendar',
+        component: calendar,
+        meta: {
+            title: "calendar"
         }
     }
 ]

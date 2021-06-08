@@ -18,7 +18,7 @@
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "px2rem-loader": "^0.1.9",
-    "vant": "^3.0.16",
+    "vant": "^3.0.17",
     "vue": "^3.0.0",
     "vue-router": "^4.0.6",
     "vuex": "^4.0.0"
