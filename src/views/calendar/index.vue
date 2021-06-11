@@ -1,7 +1,7 @@
 <template>
   <div id="calendar">
     <van-calendar
-      v-model:show="show"
+      v-model:show="calendarShow"
       ref="calendar"
       :show-confirm="true"
       @confirm="confirm"
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, toRefs, onMounted } from "vue";
+import { defineComponent, reactive, ref, toRefs } from "vue";
 import util from "@/middleware/useUtil";
 export default defineComponent({
   name: "Calendar",
@@ -23,7 +23,7 @@ export default defineComponent({
     const type = ref("single");
     const calendar = ref(null);
     const data = reactive({});
-    const show = ref(true);
+    const calendarShow = ref(true);
     const selectData = reactive({ selectList: [] });
     const useUtil = util();
     console.log(useUtil);
@@ -56,19 +56,9 @@ export default defineComponent({
       }
       return val;
     };
-    onMounted(() => {
-      //   document.getElementsByClassName("van-calendar__header-subtitle").click(()=>{
-      //       console.log(1)
-      //   });
-      document.getElementsByClassName("van-calendar__header-subtitle")[0].click(function () {
-        // e.preventDefault();
-         console.log(1)
-      });
-    // console.log(document.getElementsByClassName("van-calendar__header-subtitle"))
-    });
     return {
       ...toRefs(data),
-      show,
+      calendarShow,
       calendar,
       select,
       unselect,

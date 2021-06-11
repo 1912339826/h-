@@ -8,11 +8,12 @@ import theme from '@/views/theme'
 import useToast from '@/views/useToast'
 import catchPage from '@/views/catch/index.vue'
 import Image from "@/views/Image"
-import calendar from '@/views/calendar'
+import calendar from '@/views/calendar/index.vue'
+import formDome from '@/views/formDome/index.vue'
 // useUtil
 const routes = [{
         path: '/',
-        redirect: '/useUtil'
+        redirect: '/calendar'
     },
     {
         path: '/useAxios',
@@ -68,6 +69,14 @@ const routes = [{
         component: calendar,
         meta: {
             title: "calendar"
+        }
+    },
+    {
+        path: '/formDome',
+        name: 'formDome',
+        component: formDome,
+        meta: {
+            title: "formDome"
         }
     }
 ]
