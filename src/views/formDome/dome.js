@@ -1,29 +1,3 @@
-//范例
-export const obj = {
-    label: "地区",
-    model: {
-        Display: "",
-        submit: ""
-    },
-    initializedHidden: true,
-    name: "cityId",
-    placeholder: "请选择下属单位",
-    readonly: true,
-    toast: "",
-    // toPickPageFormPageName: "",
-    gotoSelectPage: "",
-    // openFormRefName: {
-    openRef: {
-        type: "Picker",
-        name: "PickerName"
-    }, //ref type类型 name名称 
-    required: true,
-    rules: [{
-        required: true,
-        message: '请输入正确内容'
-    }]
-}
-
 /**
  * @todo 需要提交的项
  */
@@ -70,14 +44,6 @@ export const objList = {
         placeholder: "请选择下属单位",
         readonly: true,
         toast: "",
-        beAssociatedWith: { //有关联的
-            precondition: {
-                required: [] //前置条件-必填项
-            },
-            update: {
-                reset: ["examId", "placeId", "placeCode", "subjectId", "subjectLevelId", "theoryId", "turoialIds"] //更新后-重置项
-            }
-        },
         toPickPageFormPageName: "",
         openFormRefName: {
             type: "Picker",
@@ -100,8 +66,6 @@ export const objList = {
         placeholder: "请选择考试类型",
         readonly: true,
         toast: "请选择考试类型",
-        after: ["subjectId", "subjectLevelId", "theoryId", "turoialIds"],
-        before: ["cityId"],
         rules: [{
             required: true,
             message: '请输入正确内容'
@@ -404,7 +368,9 @@ export const objList = {
 export const configEditableForm_data = {
     beAssociatedWith: {
         precondition: {
-            required: {}
+            required: {
+                examId: ["cityId"]
+            }
         },
         update: {
             reset: {
@@ -417,6 +383,7 @@ export const configEditableForm_data = {
                     "theoryId",
                     "turoialIds",
                 ],
+                examId: ["subjectId", "subjectLevelId", "theoryId", "turoialIds"]
             }
         }
     }
