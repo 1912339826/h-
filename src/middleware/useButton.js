@@ -3,7 +3,7 @@ import {
     computed
 } from "vue";
 
-export default function () {
+export function useButton () {
     const count = ref(0);
     const double = computed(() => count * 2)
 

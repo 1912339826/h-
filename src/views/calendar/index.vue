@@ -14,7 +14,7 @@
 
 <script>
 import { defineComponent, reactive, ref, toRefs } from "vue";
-import util from "@/middleware/useUtil";
+import {useUtil} from "@/middleware/useUtil";
 export default defineComponent({
   name: "Calendar",
   props: {},
@@ -25,8 +25,8 @@ export default defineComponent({
     const data = reactive({});
     const calendarShow = ref(true);
     const selectData = reactive({ selectList: [] });
-    const useUtil = util();
-    console.log(useUtil);
+    const useUtils = useUtil();
+    console.log(useUtils);
     function confirm(params) {
       console.log(params);
     }
@@ -45,7 +45,7 @@ export default defineComponent({
     function unselect(params) {
       // 当日历组件的 type 为 multiple 时，取消选中日期时触发
       // 删除对应的时间戳
-      useUtil.util.array.remove(selectData.selectList, params.getTime());
+      useUtils.util.array.remove(selectData.selectList, params.getTime());
     }
     const formatter = (type, val) => {
       if (type === "year") {

@@ -2,7 +2,7 @@ import {
     Toast
 } from "vant";
 // (未完成)
-export default function () {
+export function useToast () {
     Toast.setDefaultOptions({
         duration: 2000//ms,停留时间,值为0时,不自动消失.
     });

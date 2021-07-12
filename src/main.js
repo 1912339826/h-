@@ -10,6 +10,7 @@ import {
 } from 'vant';
 import 'vant/lib/index.css';
 import 'vant/lib/index.less';
+import '@/assets/index.less';
 import h from '@/components/h-'
 const app = createApp(App)
 for (let index = 0; index < h.length; index++) { //批量的全局组件注册

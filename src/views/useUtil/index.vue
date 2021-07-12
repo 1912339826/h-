@@ -26,14 +26,14 @@
 <script>
 import { defineComponent, reactive, toRefs, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import util from "@/middleware/useUtil";
+import {useUtil} from "@/middleware/useUtil";
 import { Toast } from "vant";
 export default defineComponent({
   name: "",
   props: {},
   components: {},
   setup() {
-    const useUtil = util();
+    const useUtils = useUtil();
     const router = useRouter();
     const route = useRoute();
     const array = ref(null);
@@ -45,6 +45,8 @@ export default defineComponent({
     const string = ref(null);
     const verify = ref(null);
     console.log(router, route);
+    // 32032120100126722X  32108820100327364X
+    // console.log(useUtils.util.verify.isCardID('32032120100126722X'))
     const data = reactive({});
     function name() {}
     const value = ref("");
@@ -55,7 +57,7 @@ export default defineComponent({
     const onCancel = () => Toast("取消");
     return {
       ...toRefs(data),
-      ...useUtil,
+      ...useUtils,
       array,
       dataType,
       element,

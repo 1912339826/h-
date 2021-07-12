@@ -19,14 +19,15 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import useHditableTable from "@/middleware/useHditableTable.js";
+import {useHEditableForm} from "@/middleware/useForm/useHEditableForm.js";
+
 export default defineComponent({
   name: "",
   props: {},
   components: {},
   setup() {
     const formaa = ref(null);
-    const { state, FormRefRepeaters, onSubmit } = useHditableTable();
+    const { state, FormRefRepeaters, onSubmit } = useHEditableForm();
     function formSubmit() {
       FormRefRepeaters(formaa);
     }

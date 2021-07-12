@@ -8,13 +8,19 @@ axios.defaults.timeout = 60000;
 // request拦截器
 axios.interceptors.request.use(config => {
   // let data = config.data || config.params;
-  config.headers['access-control-allow-origin'] = "*"
-  config.headers['Accept'] = "application/vnd.zhengqihao.v1+json";
-  config.headers['X-Requested-With'] = "XMLHttpRequest";
-  config.headers['Content-Type'] = config.headers['Content-Type'] ? config.headers['Content-Type'] : 'application/x-www-form-urlencoded;charset=UTF-8';
-  config.headers['X-Client-HashID'] = "96lx83zx7o4ykw5m" //
+  // config.headers['access-control-allow-origin'] = "*"
+  // config.headers['X-Requested-With'] = "XMLHttpRequest";
+  // config.headers['Content-Type'] = config.headers['Content-Type'] ? config.headers['Content-Type'] : 'application/x-www-form-urlencoded;charset=UTF-8';
+  // config.headers['X-Client-HashID'] = "96lx83zx7o4ykw5m" //
+  config.headers['isDev'] = 1;
+  config.headers['org'] = 2;
   if (config.method == 'post') {
-    config.headers['Content-Type'] = "application/x-www-form-urlencoded"
+    // application/x-www-form-urlencoded
+    config.headers['Content-Type'] = "application/json;charset=UTF-8"
+    config.headers['Accept'] = "*/*"
+  } else {
+    // config.data = (config.method === 'post' || config.method === 'put') ? qs.stringify(data) : null;
+    config.headers['Content-Type'] = config.headers['Content-Type'] ? config.headers['Content-Type'] : 'application/x-www-form-urlencoded;charset=UTF-8';
   }
   return config
 }, error => {
@@ -47,19 +53,19 @@ axios.interceptors.response.use(
   response => {
     console.log(response, "responseCode")
     if (response.status == 200) { // 成功处理
-      
-      if (response.data.errcode == 0) {
-        return response.data.data
-      } else {
-        // 失败要返回处理的
-        if (response.data.errcode == 11002) {
-          console.log(response.data.data) //提示
-          return response.data
-        } else {
-          console.log(response.data.data) //提示
-          return false
-        }
-      }
+      return response.data
+      // if (response.data.errcode == 0) {
+      //   return response.data.data
+      // } else {
+      //   // 失败要返回处理的
+      //   if (response.data.errcode == 11002) {
+      //     console.log(response.data.data) //提示
+      //     return response.data
+      //   } else {
+      //     console.log(response.data.data) //提示
+      //     return false
+      //   }
+      // }
     } else { // 错误处理/
       console.log('error', '服务器开小差了~稍后重试') //提示
       return Promise.reject('error')

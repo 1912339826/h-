@@ -4,7 +4,7 @@
 
 <script>
 import { defineComponent, reactive, toRefs } from "vue";
-import useToast from "@/middleware/useToast.js";
+import {useToast} from "@/middleware/useToast.js";
 export default defineComponent({
   name: "",
   props: {},

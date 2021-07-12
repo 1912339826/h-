@@ -12,7 +12,7 @@ import {
     computed,
     ref
 } from 'vue'
-export default function () {
+export function 文件名称 () {
     const count = ref(1)
     const plusOne = computed(() => count.value + 1)
 
@@ -37,7 +37,7 @@ export default function () {
 </template>
 
 <script>
-import useJEditableTable from "@/use/useXXX.js";
+import { useJEditableTable } from "@/use/useXXX.js";
 import { defineComponent, reactive, toRefs } from "vue";
 export default defineComponent({
   name: "",

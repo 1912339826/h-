@@ -1,26 +1,20 @@
 <template>
-  <div></div>
+  <div id="useAxios">
+
+  </div>
 </template>
 
 <script>
 import { defineComponent, reactive, toRefs } from "vue";
-// import useAxios from "@/middleware/useAxios.js";
+// import { useAxios } from "@/middleware/useAxios.js";
 export default defineComponent({
   name: "",
   props: {},
   components: {},
   setup() {
     // const { useAxiosAPISingle } = useAxios();
-
-    // async function posterPathList() {
-    //   let res = await useAxiosAPISingle("posterPathList");
-    //   console.log(res);
-    // }
-    // posterPathList();
-
-    const data = reactive({
-      con: 0,
-    });
+    // useAxiosAPISingle("YmInfo");
+    const data = reactive({});
     return {
       ...toRefs(data),
     };
@@ -28,4 +22,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+
+</style>

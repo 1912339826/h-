@@ -2,6 +2,7 @@ import {
     createRouter,
     createWebHashHistory
 } from 'vue-router';
+import VueBox from '@/views/box'
 import useAxios from '@/views/useAxios'
 import useUtil from '@/views/useUtil'
 import theme from '@/views/theme'
@@ -13,72 +14,90 @@ import formDome from '@/views/formDome/index.vue'
 // useUtil
 const routes = [{
         path: '/',
-        redirect: '/calendar'
+        redirect: '/VueBox/formDome'
     },
     {
-        path: '/useAxios',
-        name: 'useAxios',
-        component: useAxios,
+        path: '/VueBox',
+        component: VueBox,
         meta: {
-            title: "Axios样例"
-        }
+            title: "VueBox",
+            icon: ""
+        },
+        children: [{
+                path: '/VueBox/useAxios',
+                name: 'VueBoxUseAxios',
+                component: useAxios,
+                meta: {
+                    title: "Axios样例",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/useUtil',
+                name: 'VueBoxUseUtil',
+                component: useUtil,
+                meta: {
+                    title: "JS 页面的常用工具类样例",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/theme',
+                name: 'VueBoxTheme',
+                component: theme,
+                meta: {
+                    title: "vant主题定制",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/useToast',
+                name: 'VueBoxUseToast',
+                component: useToast,
+                meta: {
+                    title: "Toast",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/Image',
+                name: 'VueBoxImage',
+                component: Image,
+                meta: {
+                    title: "Image",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/catch',
+                name: 'VueBoxCatch',
+                component: catchPage,
+                meta: {
+                    title: "catch",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/calendar',
+                name: 'VueBoxCalendar',
+                component: calendar,
+                meta: {
+                    title: "calendar",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/formDome',
+                name: 'VueBoxFormDome',
+                component: formDome,
+                meta: {
+                    title: "formDome",
+                    icon: ""
+                }
+            }
+        ]
     },
-    {
-        path: '/useUtil',
-        name: 'useUtil',
-        component: useUtil,
-        meta: {
-            title: "JS 页面的常用工具类样例"
-        }
-    },
-    {
-        path: '/theme',
-        name: 'theme',
-        component: theme,
-        meta: {
-            title: "vant主题定制"
-        }
-    },
-    {
-        path: '/useToast',
-        name: 'useToast',
-        component: useToast,
-        meta: {
-            title: "Toast"
-        }
-    },
-    {
-        path: '/Image',
-        name: 'Image',
-        component: Image,
-        meta: {
-            title: "Image"
-        }
-    },
-    {
-        path: '/catch',
-        name: 'catch',
-        component: catchPage,
-        meta: {
-            title: "catch"
-        }
-    },
-    {
-        path: '/calendar',
-        name: 'calendar',
-        component: calendar,
-        meta: {
-            title: "calendar"
-        }
-    },
-    {
-        path: '/formDome',
-        name: 'formDome',
-        component: formDome,
-        meta: {
-            title: "formDome"
-        }
-    }
+
 ]
 const router = createRouter({
     history: createWebHashHistory(),

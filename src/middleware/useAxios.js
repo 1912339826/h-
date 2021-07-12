@@ -12,7 +12,7 @@ import {
     // multipleReq//暂时null
 } from '@/utils/request.js'
 import api from '@/api/index.js'
-export default function () {
+export function useAxios() {
     const router = useRouter();
     /**
      * @param name  //api

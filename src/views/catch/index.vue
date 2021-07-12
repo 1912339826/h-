@@ -19,7 +19,9 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const message = JSON.parse(route.query.message);
+    const message = JSON.parse(
+      route.query.message ? route.query.message : "1111"
+    );
     const state = stateArray[message.status];
     console.log(stateArray, message, state);
     const data = reactive({});

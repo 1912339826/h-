@@ -1,9 +1,9 @@
-module.exports = {
-  plugins: {
-    // postcss-pxtorem 插件的版本需要 >= 5.0.0
-    'postcss-pxtorem': {
-      rootValue: 16,
-      propList: ['*'],
-    },
-  },
-};
+// module.exports = {
+//   plugins: {
+//     // postcss-pxtorem 插件的版本需要 >= 5.0.0
+//     'postcss-pxtorem': {
+//       rootValue: 16,
+//       propList: ['*'],
+//     },
+//   },
+// };

@@ -6,7 +6,7 @@ import util from "@/utils/toolkit/index.js";
 import {
     readonly
 } from 'vue'
-export default function () {
+export function useUtil () {
     // 仅供查阅使用...
     const UseUtilFindTheCurrentDictionary = readonly({
         array: {
