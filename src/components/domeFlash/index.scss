@@ -1,0 +1,29 @@
+  #flashAnimate_wrap {
+
+    #scrollContainer {
+      width: 180px;
+      height: 75px;
+      margin: 2px 5px;
+      overflow: hidden;
+      text-align: left;
+
+      #scrollContent {
+        .list {
+          text-align: 20px;
+          padding: 0px 20px;
+          display: inline-block;
+          width: auto;
+          text-align: center;
+          margin-bottom: 5px;
+          color: #ffffff;
+          background-color: rgba(76, 77, 77, 0.445);
+          border-radius: 20px;
+          height: 25px;
+          line-height: 25px;
+          width: 140px;
+        }
+      }
+
+
+    }
+  }

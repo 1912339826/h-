@@ -36,14 +36,14 @@ export default defineComponent({
     const useUtils = useUtil();
     const router = useRouter();
     const route = useRoute();
-    const array = ref(null);
-    const dataType = ref(null);
-    const element = ref(null);
-    const environmentalType = ref(null);
-    const number = ref(null);
-    const other = ref(null);
-    const string = ref(null);
-    const verify = ref(null);
+    // const array = ref(null);
+    // const dataType = ref(null);
+    // const element = ref(null);
+    // const environmentalType = ref(null);
+    // const number = ref(null);
+    // const other = ref(null);
+    // const string = ref(null);
+    // const verify = ref(null);
     console.log(router, route);
     // 32032120100126722X  32108820100327364X
     // console.log(useUtils.util.verify.isCardID('32032120100126722X'))
@@ -58,14 +58,14 @@ export default defineComponent({
     return {
       ...toRefs(data),
       ...useUtils,
-      array,
-      dataType,
-      element,
-      environmentalType,
-      number,
-      other,
-      string,
-      verify,
+      // array,
+      // dataType,
+      // element,
+      // environmentalType,
+      // number,
+      // other,
+      // string,
+      // verify,
       name,
       value,
       onSearch,

@@ -1,6 +1,6 @@
 module.exports = {
     //  基本路径
-  publicPath: "./",
+    publicPath: "./",
     css: {
         loaderOptions: {
             less: {
@@ -11,10 +11,11 @@ module.exports = {
                         // 'text-color': '#111',
                         // 'border-color': '#eee',
                         // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-                          hack: `true; @import "@/assets/theme/tag.less";`,
+                        hack: `true; @import "@/assets/theme/tag.less";`,
                     },
                 },
             },
         },
     },
+    lintOnSave: false,
 };

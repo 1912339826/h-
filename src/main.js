@@ -20,7 +20,7 @@ for (let index = 0; index < h.length; index++) { //批量的全局组件注册
 let LazyloadObj = {
     lazyComponent: true,
 }
-
+import './index.css'
 app.use(vant).use(Lazyload, LazyloadObj).use(router).mount('#app')
 router.beforeEach((to, from, next) => {
     /* 路由发生变化修改页面meta */

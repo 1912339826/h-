@@ -11,6 +11,8 @@ import catchPage from '@/views/catch/index.vue'
 import Image from "@/views/Image"
 import calendar from '@/views/calendar/index.vue'
 import formDome from '@/views/formDome/index.vue'
+import dictionaries from '@/views/dictionaries/index.vue'
+import tailwindcssCeshi from '@/views/GitHub/tailwindcss/ceshi.vue'
 // useUtil
 const routes = [{
         path: '/',
@@ -92,6 +94,24 @@ const routes = [{
                 component: formDome,
                 meta: {
                     title: "formDome",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/dictionaries',
+                name: 'VueBoxDictionaries',
+                component: dictionaries,
+                meta: {
+                    title: "dictionaries",
+                    icon: ""
+                }
+            },
+            {
+                path: '/VueBox/tailwindcssCeshi',
+                name: 'VueBoxTailwindcssCeshi',
+                component: tailwindcssCeshi,
+                meta: {
+                    title: "tailwindcssCeshi",
                     icon: ""
                 }
             }
